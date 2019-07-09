@@ -37,6 +37,12 @@ func NewRouter() *gin.Engine {
 		// 视频列表
 		v1.GET("videos", api.VideoList)
 
+		// 视频更新
+		v1.PUT("video/:id", api.VideoUpdate)
+
+		// 视频删除
+		v1.DELETE("video/:id", api.VideoDelete)
+
 		// 需要登录保护的
 		v1.Use(middleware.AuthRequired())
 		{
