@@ -20,6 +20,7 @@ func NewRouter() *gin.Engine {
 	// 路由
 	v1 := r.Group("/api/v1")
 	{
+		v1.POST("video", api.CreateVideo)
 		v1.POST("ping", api.Ping)
 
 		// 用户登录
@@ -35,6 +36,7 @@ func NewRouter() *gin.Engine {
 			v1.GET("user/me", api.UserMe)
 			v1.DELETE("user/logout", api.UserLogout)
 		}
+
 	}
 	return r
 }
