@@ -20,7 +20,6 @@ func NewRouter() *gin.Engine {
 	// 路由
 	v1 := r.Group("/api/v1")
 	{
-		v1.POST("video", api.CreateVideo)
 		v1.POST("ping", api.Ping)
 
 		// 用户登录
@@ -28,6 +27,15 @@ func NewRouter() *gin.Engine {
 
 		// 用户登录
 		v1.POST("user/login", api.UserLogin)
+
+		// 视频创建
+		v1.POST("video", api.CreateVideo)
+
+		// 视频查看
+		v1.GET("video/:id", api.VideoDetail)
+
+		// 视频列表
+		v1.GET("videos", api.VideoList)
 
 		// 需要登录保护的
 		v1.Use(middleware.AuthRequired())
